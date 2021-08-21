@@ -15,10 +15,11 @@
             android:id="@+id/fragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:context=".fragment.FragmentActivity"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/changeFragment"
-            />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:context=".fragment.FragmentActivity"
+            tools:layout_editor_absoluteX="0dp" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/changeFragment"

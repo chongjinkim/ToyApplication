@@ -23,7 +23,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        binding.text.setOnClickListener {
+        binding.finish.setOnClickListener {
             setResult(REQUEST_CODE, Intent().apply { putExtra(RESULT_TITLE,"back from detail") })
             finish()
         }

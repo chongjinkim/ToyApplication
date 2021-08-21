@@ -10,7 +10,28 @@
     - [https://ddangeun.tistory.com/81](https://ddangeun.tistory.com/81)
     - [https://hanyeop.tistory.com/168](https://hanyeop.tistory.com/168)
 - Week 2 - Layout
-    - Activity, Fragment
+    - Activity
+        - [https://developer.android.com/guide/components/activities/intro-activities?hl=ko](https://developer.android.com/guide/components/activities/intro-activities?hl=ko)
+        - [https://developer.android.com/guide/components/activities/activity-lifecycle?hl=ko](https://developer.android.com/guide/components/activities/activity-lifecycle?hl=ko)
+        - [https://developer.android.com/guide/components/activities/state-changes?hl=ko](https://developer.android.com/guide/components/activities/state-changes?hl=ko)
+        - [https://developer.android.com/guide/components/activities/parcelables-and-bundles?hl=ko](https://developer.android.com/guide/components/activities/parcelables-and-bundles?hl=ko)
+        - launchMode
+            - [https://developer.android.com/guide/components/activities/tasks-and-back-stack?hl=ko](https://developer.android.com/guide/components/activities/tasks-and-back-stack?hl=ko)
+            - [https://choboit.tistory.com/24](https://choboit.tistory.com/24)
+            - [https://onepinetwopine.tistory.com/325](https://onepinetwopine.tistory.com/325)
+    - Fragment
+        - [https://developer.android.com/guide/fragments?hl=ko](https://developer.android.com/guide/fragments?hl=ko)
+        - [https://www.charlezz.com/?p=44128](https://www.charlezz.com/?p=44128)
+        - LifeCycle
+            - [https://developer.android.com/guide/fragments/lifecycle?hl=ko](https://developer.android.com/guide/fragments/lifecycle?hl=ko)
+
+    - Intent filter
+        - https://developer.android.com/guide/components/intents-filters
+    - Single Activity
+        - [https://handnew04.github.io/posts/2020-11-15/](https://handnew04.github.io/posts/2020-11-15/)
+
+
+- Week 3 - 생명 주기
     - Layout 종류
         - ConstraintLayout 등
     - RecyclerView
@@ -19,9 +40,7 @@
         - [https://thdev.tech/kotlin/2020/09/22/kotlin_effective_03/](https://thdev.tech/kotlin/2020/09/22/kotlin_effective_03/)
     - ConcatAdapter
         - [https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
-
-- Week 3 - 생명 주기
-    - LIfecycle
+    - Lifecycle
         - [https://developer.android.com/topic/libraries/architecture/lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle)
     - LiveData
 - Week 4~5 - JetPack Library
@@ -37,3 +56,8 @@
 - Week 6 - 3rd party
     - Retrofit, Glide, Lottie, ~~Circle ImageView~~
 - Week 7 - Coroutines 7-8주
+
+
+- Kotlin in action
+
+- https://developer.android.com/training/constraint-layout

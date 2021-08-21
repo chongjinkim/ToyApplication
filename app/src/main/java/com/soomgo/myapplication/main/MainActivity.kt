@@ -2,7 +2,9 @@ package com.soomgo.myapplication.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.soomgo.myapplication.R
@@ -13,11 +15,14 @@ import com.soomgo.myapplication.fragment.FragmentActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private val mainViewModel = MainViewModel()
-//    private val mainViewModel by viewModels<MainViewModel>()
+
+    //    private val mainViewModel = MainViewModel()
+    private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("??", "onCreate")
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.apply {
@@ -65,8 +70,9 @@ class MainActivity : AppCompatActivity() {
             REQUEST_CODE -> {
                 data?.let {
                     val result = it.getStringExtra(RESULT_TITLE)
-                    Toast.makeText(this, "$result", Toast.LENGTH_SHORT).show()
-
+                    result.takeIf { it?.isNotEmpty() ?: false }?.let {
+                        Toast.makeText(this, "$result", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
@@ -75,6 +81,8 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.run {
+//            val test = TEST("aa","sss")
+//            putParcelable("aaa",test)
             putString(KEY_DATA, mainViewModel.count.value.toString())
         }
     }
@@ -83,6 +91,28 @@ class MainActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         val data = savedInstanceState.getString(KEY_DATA)
         Toast.makeText(this@MainActivity, "restore data? $data", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("??", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("??", "onStop")
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("??", "onDestroy")
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("??", "onStart")
 
     }
 
@@ -125,4 +155,12 @@ class MainActivity : AppCompatActivity() {
  *          (due to the user completely dismissing the activity or due to finish() being called on the activity), or
  *      the system is temporarily destroying the activity
  *          due to a configuration change (such as device rotation or multi-window mode)
+ * */
+
+data class TEST(val id: String, val name: String)
+
+/**
+ * todo
+ * parcelize
+ * startactivityforresult
  * */

@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         tools:context=".main.MainActivity">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startNewActivity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startNewActivityForResult"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
             app:layout_constraintBottom_toTopOf="@id/minus"
             app:layout_constraintTop_toBottomOf="@id/startNewActivityForResult" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/minus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             app:layout_constraintEnd_toStartOf="@id/add"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/add"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
