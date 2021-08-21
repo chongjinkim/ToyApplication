@@ -94,6 +94,8 @@ class MainActivity : AppCompatActivity() {
 }
 
 /**
+ * Activity life cycler
+ *
  * onCreate()
  *      You must implement this callback
  *      In the onCreate() method, you perform basic application startup logic that should happen
@@ -106,7 +108,7 @@ class MainActivity : AppCompatActivity() {
  *      as the app prepares for the activity to enter the foreground and become interactive.
  *
  * onResume()
- *      This is the state in which the app interacts with the use
+ *      This is the state in which the app interacts with the user
  *
  * onPause()
  *      The system calls this method as the first indication that
