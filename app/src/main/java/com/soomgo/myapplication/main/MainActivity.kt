@@ -2,6 +2,7 @@ package com.soomgo.myapplication.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import com.soomgo.myapplication.R
 import com.soomgo.myapplication.databinding.ActivityMainBinding
 import com.soomgo.myapplication.detail.DetailActivity
 import com.soomgo.myapplication.fragment.FragmentActivity
+import kotlinx.android.parcel.Parcelize
 
 
 class MainActivity : AppCompatActivity() {
@@ -83,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         outState.run {
 //            val test = TEST("aa","sss")
 //            putParcelable("aaa",test)
+            putParcelable("asdf", TEST("aa", "bb"))
             putString(KEY_DATA, mainViewModel.count.value.toString())
         }
     }
@@ -157,7 +160,9 @@ class MainActivity : AppCompatActivity() {
  *          due to a configuration change (such as device rotation or multi-window mode)
  * */
 
-data class TEST(val id: String, val name: String)
+
+@Parcelize
+data class TEST(val id: String, val name: String) : Parcelable // add missing parcelable implement
 
 /**
  * todo
