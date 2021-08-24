@@ -1,4 +1,4 @@
-package com.soomgo.myapplication.main
+package com.soomgo.myapplication
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

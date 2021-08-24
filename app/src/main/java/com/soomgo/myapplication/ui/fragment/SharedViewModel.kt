@@ -1,4 +1,4 @@
-package com.soomgo.myapplication.fragment
+package com.soomgo.myapplication.ui.fragment
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

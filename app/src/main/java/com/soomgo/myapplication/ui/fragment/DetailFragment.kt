@@ -1,4 +1,4 @@
-package com.soomgo.myapplication.fragment
+package com.soomgo.myapplication.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +14,7 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [BlankFragment.newInstance] factory method to
+ * Use the [MainFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 class DetailFragment : Fragment() {

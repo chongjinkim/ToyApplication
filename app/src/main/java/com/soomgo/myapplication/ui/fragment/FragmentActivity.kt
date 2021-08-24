@@ -1,4 +1,4 @@
-package com.soomgo.myapplication.fragment
+package com.soomgo.myapplication.ui.fragment
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -13,18 +13,18 @@ class FragmentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_fragment)
-        changeFragment()
+        setClickListener()
     }
 
     override fun onResume() {
         super.onResume()
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragmentContainer, BlankFragment.newInstance())
+            .add(R.id.fragmentContainer, MainFragment.newInstance())
             .commit()
     }
 
-    private fun changeFragment() {
+    private fun setClickListener() {
         binding.changeFragment.setOnClickListener {
             viewModel.setContents("sent from blank")
             supportFragmentManager

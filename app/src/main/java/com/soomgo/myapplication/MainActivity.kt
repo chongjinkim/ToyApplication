@@ -8,22 +8,21 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.soomgo.myapplication.MainViewModel
 import com.soomgo.myapplication.R
 import com.soomgo.myapplication.databinding.ActivityMainBinding
-import com.soomgo.myapplication.detail.DetailActivity
-import com.soomgo.myapplication.fragment.FragmentActivity
+import com.soomgo.myapplication.ui.detail.DetailActivity
+import com.soomgo.myapplication.ui.fragment.FragmentActivity
 import kotlinx.android.parcel.Parcelize
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-
-    //    private val mainViewModel = MainViewModel()
     private val mainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("??", "onCreate")
+        Log.i("TAG", "onCreate")
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -53,15 +52,6 @@ class MainActivity : AppCompatActivity() {
                 Intent(this@MainActivity, FragmentActivity::class.java).apply {
                     startActivity(this)
                 }
-//                supportFragmentManager
-//                    .beginTransaction()
-//                    .add(BlankFragment.newInstance("hi", "there"), null)
-//                    .commit()
-
-//                supportFragmentManager.commit {
-//                    setReorderingAllowed(true)
-//                    add<BlankFragment>(R.id.fragment_container_view)
-//                }
             }
         }
     }
@@ -83,8 +73,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.run {
-//            val test = TEST("aa","sss")
-//            putParcelable("aaa",test)
             putParcelable("asdf", TEST("aa", "bb"))
             putString(KEY_DATA, mainViewModel.count.value.toString())
         }
@@ -98,24 +86,24 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        Log.i("??", "onPause")
+        Log.i("TAG", "onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.i("??", "onStop")
+        Log.i("TAG", "onStop")
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.i("??", "onDestroy")
+        Log.i("TAG", "onDestroy")
 
     }
 
     override fun onStart() {
         super.onStart()
-        Log.i("??", "onStart")
+        Log.i("TAG", "onStart")
 
     }
 
@@ -166,6 +154,9 @@ data class TEST(val id: String, val name: String) : Parcelable // add missing pa
 
 /**
  * todo
- * parcelize
+ * week2
+ * parcelize //done
  * startactivityforresult
+ *
+ *
  * */

@@ -1,4 +1,4 @@
-package com.soomgo.myapplication.detail
+package com.soomgo.myapplication.ui.detail
 
 import android.content.Intent
 import android.os.Bundle

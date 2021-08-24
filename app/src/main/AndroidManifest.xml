@@ -17,8 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".detail.DetailActivity" />
-        <activity android:name=".fragment.FragmentActivity" />
+        <activity android:name="com.soomgo.myapplication.ui.detail.DetailActivity" />
+        <activity android:name="com.soomgo.myapplication.ui.fragment.FragmentActivity" />
     </application>
 
 </manifest>
