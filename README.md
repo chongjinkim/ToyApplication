@@ -31,18 +31,31 @@
         - [https://handnew04.github.io/posts/2020-11-15/](https://handnew04.github.io/posts/2020-11-15/)
 
 
-- Week 3 - 생명 주기
-    - Layout 종류
-        - ConstraintLayout 등
+- Week 3 - 생명 주기, RecyclerView
+    - ConstraintLayout
+        - match_parent, wrap_content
+            - 디바이스 크기에 따른 차이
+        - left vs start
+        - barrier
+        - chaining
+            - [https://medium.com/@nomanr/constraintlayout-chains-4f3b58ea15bb](https://medium.com/@nomanr/constraintlayout-chains-4f3b58ea15bb)
+        - [https://developer.android.com/training/constraint-layout](https://developer.android.com/training/constraint-layout)
+        - [https://developer.android.com/codelabs/constraint-layout#0](https://developer.android.com/codelabs/constraint-layout#0)
+
     - RecyclerView
         - [https://developer.android.com/codelabs/kotlin-android-training-diffutil-databinding#0](https://developer.android.com/codelabs/kotlin-android-training-diffutil-databinding#0)
     - ListAdapter
         - [https://thdev.tech/kotlin/2020/09/22/kotlin_effective_03/](https://thdev.tech/kotlin/2020/09/22/kotlin_effective_03/)
     - ConcatAdapter
         - [https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter](https://developer.android.com/reference/androidx/recyclerview/widget/ConcatAdapter)
-    - Lifecycle
+    - Different type of view holder
+        - https://lktprogrammer.tistory.com/190
+    - LIfecycle
         - [https://developer.android.com/topic/libraries/architecture/lifecycle](https://developer.android.com/topic/libraries/architecture/lifecycle)
+        - [https://developer.android.com/codelabs/android-lifecycles#0](https://developer.android.com/codelabs/android-lifecycles#0)
     - LiveData
+    - ViewModel
+        - [https://developer.android.com/topic/libraries/architecture/viewmodel](https://developer.android.com/topic/libraries/architecture/viewmodel)
 - Week 4~5 - JetPack Library
     - Paging
         - [https://developer.android.com/topic/libraries/architecture/paging/v3-overview](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
