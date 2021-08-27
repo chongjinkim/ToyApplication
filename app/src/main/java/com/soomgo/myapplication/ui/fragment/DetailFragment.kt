@@ -19,17 +19,16 @@ private const val ARG_PARAM2 = "param2"
  */
 class DetailFragment : Fragment() {
     lateinit var binding: FragmentDetailBinding
-    val viewModel : SharedViewModel by activityViewModels()
-
-//    private var param1: String? = null
-//    private var param2: String? = null
+    val viewModel: SharedViewModel by activityViewModels()
+    private var param1: String? = null
+    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
     }
 
     override fun onCreateView(
@@ -43,13 +42,12 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            text.text = "This is DetailFragment \n viewModel contents : ${viewModel.getContents()}"
+            title.text = "This is DetailFragment"
+            desc.text = "${param1 ?: "empty now"}"
             finish.setOnClickListener {
-                viewModel.setContents("sent from Detail")
                 activity?.onBackPressed()
             }
         }
-
     }
 
     companion object {

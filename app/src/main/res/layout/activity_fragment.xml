@@ -7,28 +7,9 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainer"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/changeFragment"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:context=".ui.fragment.FragmentActivity"
-            tools:layout_editor_absoluteX="0dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/changeFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="change fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent" />
 
 </layout>

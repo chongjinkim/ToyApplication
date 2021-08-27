@@ -10,28 +10,25 @@ import com.soomgo.myapplication.databinding.ActivityFragmentBinding
 class FragmentActivity : AppCompatActivity() {
     lateinit var binding: ActivityFragmentBinding
     val viewModel: SharedViewModel by viewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_fragment)
-        setClickListener()
-    }
-
-    override fun onResume() {
-        super.onResume()
+    private val mainClickListener: (String) -> Int = {title->
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragmentContainer, MainFragment.newInstance())
+            .replace(R.id.fragmentContainer, DetailFragment.newInstance(title))
             .commit()
     }
 
-    private fun setClickListener() {
-        binding.changeFragment.setOnClickListener {
-            viewModel.setContents("sent from blank")
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragmentContainer, DetailFragment.newInstance())
-                .addToBackStack(null)//back stack 추가 필요
-                .commit()
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_fragment)
+        initFragment()
+    }
+
+    private fun initFragment() {
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fragmentContainer, MainFragment.newInstance().apply {
+                this.clickListener = mainClickListener
+            })
+            .commit()
     }
 }
