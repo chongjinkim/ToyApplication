@@ -14,6 +14,7 @@ import com.soomgo.myapplication.databinding.FragmentMainBinding
 import com.soomgo.myapplication.databinding.LayoutMainListBinding
 import com.soomgo.myapplication.databinding.LayoutTitleBinding
 import com.soomgo.myapplication.databinding.LayoutType1Binding
+import java.lang.IllegalArgumentException
 
 class MainFragment : Fragment() {
     val viewModel: SharedViewModel by activityViewModels()
@@ -33,27 +34,32 @@ class MainFragment : Fragment() {
         binding.apply {
             /**0. layout manager*/
             //todo better on xml
-            recyclerview.layoutManager = LinearLayoutManager(this@MainFragment.context)
+            /*recyclerview.layoutManager = LinearLayoutManager(this@MainFragment.context)
                 .apply {
                     orientation = LinearLayoutManager.VERTICAL
-                }
-            //recyclerview.layoutManager = GridLayoutManager(this@MainFragment.context, 3)
-            //recyclerview.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+//                    orientation = LinearLayoutManager.HORIZONTAL
+                }*/
+//            recyclerview.layoutManager = GridLayoutManager(this@MainFragment.context, 3)
+//            recyclerview.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             /**1. default*/
             recyclerview.adapter = MainAdapter(LocalDataSource().mainList)
-            /**2. list adapter*/
-            //recyclerview.adapter = MainListAdapter().apply {
-            //submitList(LocalDataSource().mainList)
-            //}
-            /**3. concat adapter*/
-            //recyclerview.adapter = ConcatAdapter().apply {
-            //addAdapter(TitleAdapter("제목 1"))
-            //addAdapter(TitleAdapter("제목 2"))
-            //addAdapter(TitleAdapter("제목 3"))
-            //addAdapter(mainAdapter)
-            //}
-            /**4. multi type adapter*/
-            //recyclerview.adapter = MultiTypeAdapter(LocalDataSource().mainList)
+//            recyclerview.adapter = SampleAdpater(LocalDataSource().mainList)
+
+            /**2. concat adapter*/
+//            recyclerview.adapter = ConcatAdapter().apply {
+//                addAdapter(TitleAdapter("제목 1"))
+//                addAdapter(MainAdapter(LocalDataSource().mainList))
+//                addAdapter(TitleAdapter("제목 2"))
+//                addAdapter(MainAdapter(LocalDataSource().mainList))
+//            }
+
+            /**3. multi type adapter*/
+//            recyclerview.adapter = MultiTypeAdapter(LocalDataSource().mainList)
+
+            /**4. list adapter*/
+//            recyclerview.adapter = MainListAdapter().apply {
+//                submitList(LocalDataSource().mainList)
+//            }
         }
     }
 
@@ -119,7 +125,6 @@ class MainFragment : Fragment() {
                 subTitle.text = getItem(position).subTitle
             }
         }
-
     }
 
     //MULTI TYPE ADAPTER
@@ -136,7 +141,7 @@ class MainFragment : Fragment() {
                         )
                     MainViewHolder(view)
                 }
-                else -> {
+                R.layout.layout_type_1 -> {
                     val view =
                         LayoutType1Binding.inflate(
                             LayoutInflater.from(parent.context),
@@ -145,6 +150,7 @@ class MainFragment : Fragment() {
                         )
                     Type1ViewHolder(view)
                 }
+                else -> throw IllegalArgumentException("")
             }
         }
 
@@ -168,7 +174,7 @@ class MainFragment : Fragment() {
         }
 
         override fun getItemCount() = list.size
-        override fun getItemViewType(position: Int) = when (position % 2 == 0) {
+        override fun getItemViewType(position: Int): Int = when (position % 2 == 0) {
             true -> {
                 R.layout.layout_main_list
             }
@@ -176,11 +182,75 @@ class MainFragment : Fragment() {
                 R.layout.layout_type_1
             }
         }
+//        override fun getItemViewType(position: Int): Int = when (list[position].type) {
+//            1 -> {
+//                R.layout.layout_main_list
+//            }
+//            2 -> {
+//                R.layout.layout_type_1
+//            }
+//            else -> {
+//                R.layout.layout_type_1
+//            }
+//        }
+
     }
 
     companion object {
         @JvmStatic
         fun newInstance(param1: String = "", param2: String = "") = MainFragment()
     }
+
+    class SampleAdapter(val list: List<MainList>) : RecyclerView.Adapter<MainViewHolder>() {
+        override fun getItemCount() = list.size
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
+            val binding: LayoutMainListBinding = LayoutMainListBinding
+                .inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+
+            return MainViewHolder(binding)
+        }
+
+        override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+            val item: MainList = list[position]
+            holder.binding.image.setImageResource(item.image)
+            holder.binding.title.text = item.title
+            holder.binding.subTitle.text = item.subTitle
+        }
+    }
 }
 
+
+/**
+0. type of recyclerview layout
+1. linear layout
+2. grid layout
+3. staggeredLayout
+
+1. xml
+- Recyclerview
+<Recyclerview
+witdh
+height
+...
+...
+/>
+
+2.코드
+- declare Recyclerview adapter
+- declare viewHodler
+//
+- Adapter : Recycerview.Adpater<ViewHolder>(){
+
+}
+
+3 glueing 리사이클러뷰에 레이아웃 매니저 설정, 어댑터를 설정
+- 1. let recyclerview knows which type of layout
+recycerview.layoutManager = LinearLayout......
+- 2. set adapter to recyclerview
+ *
+ * */

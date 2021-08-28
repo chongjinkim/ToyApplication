@@ -14,8 +14,10 @@ class LocalDataSource {
 data class MainList(
     val image: Int = R.drawable.ic_launcher_foreground,
     val title: String = "Title",
-    val subTitle: String = "SubTitle"
-){
+    val subTitle: String = "SubTitle",
+    val type : Int = 0
+)
+{
     companion object{
         val DiffUtil = object : DiffUtil.ItemCallback<MainList>(){
             override fun areItemsTheSame(oldItem: MainList, newItem: MainList): Boolean {
@@ -25,7 +27,6 @@ data class MainList(
             override fun areContentsTheSame(oldItem: MainList, newItem: MainList): Boolean {
                 return oldItem.title == newItem.title
             }
-
         }
     }
 }
