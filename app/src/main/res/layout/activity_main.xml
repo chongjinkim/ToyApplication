@@ -20,14 +20,13 @@
             android:id="@+id/count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{String.valueOf(viewModel.count)}"
-            app:layout_constraintBottom_toTopOf="@id/startNewActivity"
-            app:layout_constraintTop_toTopOf="parent"
             android:background="@android:color/darker_gray"
             android:padding="10dp"
-            tools:text="0"
+            android:text="@{String.valueOf(viewModel.count)}"
             android:textAlignment="center"
-            />
+            app:layout_constraintBottom_toTopOf="@id/startNewActivity"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="0" />
 
 
         <androidx.appcompat.widget.AppCompatButton
@@ -56,8 +55,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="start new fragment"
-            app:layout_constraintTop_toBottomOf="@id/startNewActivityForResult"
-            />
+            app:layout_constraintTop_toBottomOf="@id/startNewActivityForResult" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startGithubFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="start github fragment"
+            app:layout_constraintTop_toBottomOf="@id/startNewFragment" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/minus"
@@ -76,5 +82,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/minus" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

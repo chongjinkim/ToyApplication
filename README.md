@@ -56,16 +56,22 @@
     - LiveData
     - ViewModel
         - [https://developer.android.com/topic/libraries/architecture/viewmodel](https://developer.android.com/topic/libraries/architecture/viewmodel)
-- Week 4~5 - JetPack Library
+- Week 4 - Dependency Injection
+    - Dependency Injection
+        [https://developer.android.com/training/dependency-injection?hl=ko](https://developer.android.com/training/dependency-injection?hl=ko)
+        [https://developer.android.com/training/dependency-injection/manual?hl=ko](https://developer.android.com/training/dependency-injection/manual?hl=ko)
+        - Koin
+            - [https://insert-koin.io/docs/setup/v3](https://insert-koin.io/docs/setup/v3)
+            - [https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html](https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html)
+            - [https://salix97.tistory.com/265](https://salix97.tistory.com/265)
     - Paging
         - [https://developer.android.com/topic/libraries/architecture/paging/v3-overview](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
     - DataBinding
         - [https://umbum.dev/915](https://umbum.dev/915)
-    - Dependency Injection
-        - Koin
-            - [https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html](https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html)
-            - [https://salix97.tistory.com/265](https://salix97.tistory.com/265)
+
     - Room, SharedPreference
+- Week 5 - JetPack Library
+
 - Week 6 - 3rd party
     - Retrofit, Glide, Lottie, ~~Circle ImageView~~
 - Week 7 - Coroutines 7-8주

@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.soomgo.myapplication.R
 import com.soomgo.myapplication.databinding.ActivityFragmentBinding
+import com.soomgo.myapplication.ui.github.GithubListFragment
 
 class FragmentActivity : AppCompatActivity() {
     lateinit var binding: ActivityFragmentBinding
     val viewModel: SharedViewModel by viewModels()
-    private val mainClickListener: (String) -> Int = {title->
+    private val mainClickListener: (String) -> Int = { title ->
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.fragmentContainer, DetailFragment.newInstance(title))
@@ -26,9 +27,7 @@ class FragmentActivity : AppCompatActivity() {
     private fun initFragment() {
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragmentContainer, MainFragment.newInstance().apply {
-                this.clickListener = mainClickListener
-            })
+            .add(R.id.fragmentContainer, GithubListFragment.newInstance())
             .commit()
     }
 }

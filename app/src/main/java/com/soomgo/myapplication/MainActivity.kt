@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.soomgo.myapplication.MainViewModel
@@ -14,11 +13,11 @@ import com.soomgo.myapplication.databinding.ActivityMainBinding
 import com.soomgo.myapplication.ui.detail.DetailActivity
 import com.soomgo.myapplication.ui.fragment.FragmentActivity
 import kotlinx.android.parcel.Parcelize
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private val mainViewModel by viewModels<MainViewModel>()
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,6 +48,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             startNewFragment.setOnClickListener {
+                Intent(this@MainActivity, FragmentActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
+
+            startGithubFragment.setOnClickListener {
                 Intent(this@MainActivity, FragmentActivity::class.java).apply {
                     startActivity(this)
                 }
