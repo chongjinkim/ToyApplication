@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.soomgo.myapplication.R
 import com.soomgo.myapplication.databinding.ActivityDetailBinding
-import com.soomgo.myapplication.main.MainActivity.Companion.REQUEST_CODE
-import com.soomgo.myapplication.main.MainActivity.Companion.RESULT_TITLE
+import com.soomgo.myapplication.MainActivity.Companion.REQUEST_CODE
+import com.soomgo.myapplication.MainActivity.Companion.RESULT_TITLE
 
 class DetailActivity : AppCompatActivity() {
     lateinit var binding : ActivityDetailBinding

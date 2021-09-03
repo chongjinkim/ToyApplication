@@ -1,14 +1,13 @@
 package com.soomgo.myapplication.ui.github
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.soomgo.myapplication.data.model.User
+import com.soomgo.myapplication.data.model.UserResponse
 import com.soomgo.myapplication.data.remoteDataSource.GithubRepository
-import com.soomgo.myapplication.data.remoteDataSource.GithubRepositoryImpl
+import retrofit2.Call
 
 class GithubViewModel(private val repository: GithubRepository) : ViewModel() {
-    fun getUsers(query : String): List<User> {
+    fun getUsers(query : String): Call<UserResponse> {
         return repository.fetchUser(query)
     }
 }

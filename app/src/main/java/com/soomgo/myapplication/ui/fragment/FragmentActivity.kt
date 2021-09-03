@@ -4,9 +4,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.soomgo.myapplication.MainActivity.Companion.FRAGMENT_TYPE
 import com.soomgo.myapplication.R
 import com.soomgo.myapplication.databinding.ActivityFragmentBinding
+import com.soomgo.myapplication.ui.github.CoroutineGithubListFragment
 import com.soomgo.myapplication.ui.github.GithubListFragment
+import java.lang.IllegalArgumentException
 
 class FragmentActivity : AppCompatActivity() {
     lateinit var binding: ActivityFragmentBinding
@@ -21,13 +24,20 @@ class FragmentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_fragment)
-        initFragment()
+        val fragmentType = intent.getIntExtra(FRAGMENT_TYPE,0)
+        initFragment(fragmentType)
     }
 
-    private fun initFragment() {
+    private fun initFragment(fragmentType: Int) {
+        val fragment = when(fragmentType){
+            0 -> MainFragment.newInstance()
+            1 -> GithubListFragment.newInstance()
+            2 -> CoroutineGithubListFragment.newInstance()
+            else -> throw IllegalArgumentException("not defined fragment")
+        }
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragmentContainer, GithubListFragment.newInstance())
+            .add(R.id.fragmentContainer, fragment)
             .commit()
     }
 }

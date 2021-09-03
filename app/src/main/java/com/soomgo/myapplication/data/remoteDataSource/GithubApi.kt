@@ -11,33 +11,13 @@ import retrofit2.http.Query
 
 
 interface GithubApi {
-
-//    @GET("search/users")
-//    fun getUser(
-//        @Query("q") q: String?
-//    ): Single<UserResponse>
-
     @GET("search/users")
     fun getUser(
         @Query("q") q: String?
-    ): Call<List<User>>
+    ): Call<UserResponse>
 
-//    @GET("search/users")
-//    suspend fun getUserCoroutines(
-//        @Query("q") q: String?,
-//        @Query("per_page") page : Int = 3
-//
-//    ): UserResponse
-//
-//    @GET("search/users")
-//    suspend fun getUserCoroutinesPaging(
-//        @Query("q") q: String?,
-//        @Query("page") p : Int,
-//        @Query("per_page") page : Int = 3
-//    ): UserResponse
-//
-//    @GET("search/users")
-//    suspend fun getUserCoroutinesResult(
-//        @Query("q") q: String?
-//    ): Response<UserResponse>
+    @GET("search/users")
+    suspend fun coroutineGetUser(
+        @Query("q") q: String?,
+    ): UserResponse
 }

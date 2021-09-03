@@ -1,16 +1,21 @@
 package com.soomgo.myapplication.ui.github
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ListAdapter
 import com.soomgo.myapplication.data.model.User
+import com.soomgo.myapplication.data.model.UserResponse
 import com.soomgo.myapplication.databinding.FragmentMainBinding
 import com.soomgo.myapplication.databinding.LayoutMainListBinding
 import com.soomgo.myapplication.ui.fragment.MainFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class GithubListFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
@@ -32,11 +37,20 @@ class GithubListFragment : Fragment() {
             adapter = githubAdapter
         }
 
-        githubAdapter.submitList(viewModel.getUsers("aa"))
+        viewModel.getUsers("aa").enqueue(object : Callback<UserResponse>{
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+                githubAdapter.submitList(response.body()?.items)
+            }
+
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                Log.e("GithubListFragment", "${t.message}")
+            }
+
+        })
     }
 
     //LIST ADAPTER
-    inner class GithubAdapter : ListAdapter<User, MainFragment.MainViewHolder>(User.DiffUtil) {
+    class GithubAdapter : ListAdapter<User, MainFragment.MainViewHolder>(User.DiffUtil) {
         override fun onCreateViewHolder(
             parent: ViewGroup,
             viewType: Int

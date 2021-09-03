@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.MainActivity">
+        tools:context=".MainActivity">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/count"
@@ -64,6 +64,12 @@
             android:text="start github fragment"
             app:layout_constraintTop_toBottomOf="@id/startNewFragment" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startCoroutinesGithubFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="start coroutines github fragment"
+            app:layout_constraintTop_toBottomOf="@id/startGithubFragment" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/minus"

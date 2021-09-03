@@ -1,4 +1,4 @@
-package com.soomgo.myapplication.main
+package com.soomgo.myapplication
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,8 +7,6 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.soomgo.myapplication.MainViewModel
-import com.soomgo.myapplication.R
 import com.soomgo.myapplication.databinding.ActivityMainBinding
 import com.soomgo.myapplication.ui.detail.DetailActivity
 import com.soomgo.myapplication.ui.fragment.FragmentActivity
@@ -49,12 +47,21 @@ class MainActivity : AppCompatActivity() {
 
             startNewFragment.setOnClickListener {
                 Intent(this@MainActivity, FragmentActivity::class.java).apply {
+                    putExtra(FRAGMENT_TYPE, 0)
                     startActivity(this)
                 }
             }
 
             startGithubFragment.setOnClickListener {
                 Intent(this@MainActivity, FragmentActivity::class.java).apply {
+                    putExtra(FRAGMENT_TYPE, 1)
+                    startActivity(this)
+                }
+            }
+
+            startCoroutinesGithubFragment.setOnClickListener {
+                Intent(this@MainActivity, FragmentActivity::class.java).apply {
+                    putExtra(FRAGMENT_TYPE, 2)
                     startActivity(this)
                 }
             }
@@ -116,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         const val KEY_DATA = "KEY_DATA"
         const val REQUEST_CODE = 1001
         const val RESULT_TITLE = "RESULT_TITLE"
+        const val FRAGMENT_TYPE = "FRAGMENT_TYPE"
     }
 }
 
