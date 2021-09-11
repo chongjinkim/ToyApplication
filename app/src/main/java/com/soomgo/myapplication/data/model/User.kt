@@ -1,7 +1,10 @@
 package com.soomgo.myapplication.data.model
 
+import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class User(
     val id: Int,
     val avatar_url: String,
@@ -23,7 +26,7 @@ data class User(
     val type: String,
     val url: String,
     var isFavorite: Boolean
-) {
+) : Parcelable {
     companion object {
         val DiffUtil = object : androidx.recyclerview.widget.DiffUtil.ItemCallback<User>() {
             override fun areItemsTheSame(oldItem: User, newItem: User) = oldItem == newItem

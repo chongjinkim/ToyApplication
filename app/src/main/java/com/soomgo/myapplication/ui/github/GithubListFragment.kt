@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.ListAdapter
+import com.bumptech.glide.Glide
+import com.soomgo.myapplication.R
 import com.soomgo.myapplication.data.model.User
 import com.soomgo.myapplication.data.model.UserResponse
 import com.soomgo.myapplication.databinding.FragmentMainBinding
@@ -21,11 +24,13 @@ class GithubListFragment : Fragment() {
     lateinit var binding: FragmentMainBinding
     val githubAdapter = GithubAdapter()
     val viewModel: GithubViewModel by viewModel()
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = FragmentMainBinding.inflate(
+    ): View = FragmentMainBinding.inflate(
         inflater, container, false
     ).apply {
         binding = this
@@ -34,10 +39,20 @@ class GithubListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.recyclerview.apply {
-            adapter = githubAdapter
+            adapter = githubAdapter.apply {
+                clickListener = { user ->
+                    val fragment = GithubDetailFragment.newInstance(user)
+                    activity
+                        ?.supportFragmentManager
+                        ?.beginTransaction()
+                        ?.replace(R.id.fragmentContainer, fragment)
+                        ?.addToBackStack(null)
+                        ?.commit()
+                }
+            }
         }
 
-        viewModel.getUsers("aa").enqueue(object : Callback<UserResponse>{
+        viewModel.getUsers("kakao").enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
                 githubAdapter.submitList(response.body()?.items)
             }
@@ -45,31 +60,39 @@ class GithubListFragment : Fragment() {
             override fun onFailure(call: Call<UserResponse>, t: Throwable) {
                 Log.e("GithubListFragment", "${t.message}")
             }
-
         })
     }
 
-    //LIST ADAPTER
-    class GithubAdapter : ListAdapter<User, MainFragment.MainViewHolder>(User.DiffUtil) {
-        override fun onCreateViewHolder(
-            parent: ViewGroup,
-            viewType: Int
-        ): MainFragment.MainViewHolder {
-            val view =
-                LayoutMainListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return MainFragment.MainViewHolder(view)
-        }
+    companion object {
+        const val SELECTED_USER = "SELECTED_USER"
+        const val USER_RESULT = "USER_RESULT"
 
-        override fun onBindViewHolder(holder: MainFragment.MainViewHolder, position: Int) {
-            holder.binding.apply {
-                title.text = getItem(position).login
-                subTitle.text = getItem(position).repos_url
-            }
-        }
+        @JvmStatic
+        fun newInstance() = GithubListFragment()
+    }
+}
+
+//LIST ADAPTER
+class GithubAdapter : ListAdapter<User, MainFragment.MainViewHolder>(User.DiffUtil) {
+    var clickListener: ((User) -> Unit)? = null
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MainFragment.MainViewHolder {
+        val view =
+            LayoutMainListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MainFragment.MainViewHolder(view)
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String = "", param2: String = "") = GithubListFragment()
+    override fun onBindViewHolder(holder: MainFragment.MainViewHolder, position: Int) {
+        holder.binding.apply {
+            Glide.with(this.root).load(getItem(position).avatar_url).into(image)
+            title.text = getItem(position).login
+            subTitle.text = getItem(position).repos_url
+        }.also {
+            it.root.setOnClickListener {
+                clickListener?.invoke(getItem(position))
+            }
+        }
     }
 }

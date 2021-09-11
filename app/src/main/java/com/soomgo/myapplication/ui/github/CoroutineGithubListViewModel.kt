@@ -8,7 +8,7 @@ import com.soomgo.myapplication.data.remoteDataSource.CoroutineGithubRepositoryI
 import com.soomgo.myapplication.data.remoteDataSource.GithubRepository
 import retrofit2.Call
 
-class CoroutineGithubViewModel(private val repository: CoroutineGithubRepository) :
+class CoroutineGithubListViewModel(private val repository: CoroutineGithubRepository) :
     ViewModel() {
     private val _query = MutableLiveData("")
 
@@ -24,9 +24,5 @@ class CoroutineGithubViewModel(private val repository: CoroutineGithubRepository
 
     fun setQuery(query: String) {
         _query.value = query
-    }
-
-    suspend fun getUsers(query: String): UserResponse {
-        return repository.coroutineFetchUser(query)
     }
 }

@@ -57,12 +57,21 @@
             android:text="start new fragment"
             app:layout_constraintTop_toBottomOf="@id/startNewActivityForResult" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleWeek4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Week4"
+            app:layout_constraintBottom_toTopOf="@id/startGithubFragment"
+            app:layout_constraintTop_toBottomOf="@id/startNewFragment" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startGithubFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="start github fragment"
-            app:layout_constraintTop_toBottomOf="@id/startNewFragment" />
+            app:layout_constraintTop_toBottomOf="@id/titleWeek4" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startCoroutinesGithubFragment"

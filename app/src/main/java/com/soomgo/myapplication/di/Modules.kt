@@ -7,7 +7,7 @@ import com.soomgo.myapplication.data.remoteDataSource.CoroutineGithubRepository
 import com.soomgo.myapplication.data.remoteDataSource.CoroutineGithubRepositoryImpl
 import com.soomgo.myapplication.data.remoteDataSource.GithubRepository
 import com.soomgo.myapplication.data.remoteDataSource.GithubRepositoryImpl
-import com.soomgo.myapplication.ui.github.CoroutineGithubViewModel
+import com.soomgo.myapplication.ui.github.CoroutineGithubListViewModel
 import com.soomgo.myapplication.ui.github.GithubViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -25,7 +25,7 @@ val repositoryModule = module {
 val viewModelModule = module {
     viewModel { MainViewModel() }
     viewModel { GithubViewModel(get()) }
-    viewModel { CoroutineGithubViewModel(get()) }
+    viewModel { CoroutineGithubListViewModel(get()) }
 }
 
 
