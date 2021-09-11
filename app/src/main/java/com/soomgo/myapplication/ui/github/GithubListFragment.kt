@@ -9,9 +9,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
+import com.google.gson.Gson
 import com.soomgo.myapplication.R
 import com.soomgo.myapplication.data.model.User
 import com.soomgo.myapplication.data.model.UserResponse
+import com.soomgo.myapplication.data.network.Client
+import com.soomgo.myapplication.data.remoteDataSource.GithubRepositoryImpl
 import com.soomgo.myapplication.databinding.FragmentMainBinding
 import com.soomgo.myapplication.databinding.LayoutMainListBinding
 import com.soomgo.myapplication.ui.fragment.MainFragment
@@ -51,6 +54,14 @@ class GithubListFragment : Fragment() {
                 }
             }
         }
+        /**
+         * 문제점
+         *  MVVM 구조에 맞지 않는다
+         *      v : 레이아웃
+         *      vm : 로직 / 상
+         *  가독성 : 구조에 맞지 않는다
+         *  번거로움 : 로직 성공/실패 -> viewModel
+         * */
 
         viewModel.getUsers("kakao").enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {

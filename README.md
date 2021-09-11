@@ -59,9 +59,49 @@
 
 - Week 4
     - Retrofit
+        - MVVM
+            - V  : 화면
+                -
+            - VM : 상태 / 로직
+                - 통신 관련 작업
+                - 통신 모듈의 종속성 :
+                    Repository Module (데이터 저장 / 접근)
+                        - LocalRepository  : sharedPreference / Room DB
+                        - RemoteRepository : API 통신 (github) , 공공데이터
+                        GithubRepository()
+                        class GithubViewModel (val githubRepo : GithubRepository()) : ViewModel(){
+                            val _list = MutableLiveData<User>()
+                            val list = LiveData()
+                                get() = _list.value
+
+                            fun getUserList(){
+                                _list.value =  githubRepo.getUserList()
+
+                            }
+                        }
+            - M  : 모델
+                -
+            흐름 : 뷰 (쿼리) -> 뷰모델 (쿼리 -> 통신 모듈 -> API 통신 -> 결과 -> 뷰모델) -> 뷰 observe
+
     - Glide  
     - Coroutines
     - 비동기처리
+        - 사용자 UX 최적화
+            - Main Thread /  Background Thread
+                - Main : UI 관련 작업만
+                - Background : 시간이 오래 걸리는 작업 (API 통신, DB 작업, etc)
+                    - Looper / handler
+                    - AsyncTask : Deprecated
+                    - RxJava : android 생명 주기 -> RxAndroid
+                    - Coroutines(Google)
+            [https://developer.android.com/guide/components/processes-and-threads?hl=ko] (https://developer.android.com/guide/components/processes-and-threads?hl=ko)
+    - DI (DEPENDENCY INJECTION)
+        -
+    - 숙제 : 화면 그리기 / 연습 소스 커밋업 ** 드로이드 나이츠?!
+        - Client.kt
+        - CoroutineGithubRepository - coroutineFetchUser
+        - CoroutineGithubListViewModel.kt
+        - getUser()
 - Week 5
     - Paging
         - [https://developer.android.com/topic/libraries/architecture/paging/v3-overview](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)

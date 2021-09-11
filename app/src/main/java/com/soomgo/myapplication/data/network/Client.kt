@@ -15,9 +15,10 @@ class Client(private val gSon: Gson) {
     private val httpLogLevel
         get() = if (BuildConfig.DEBUG) HttpCustomLoggingInterceptor.Level.BODY else HttpCustomLoggingInterceptor.Level.NONE
 
-    private fun createClient(host: String = USER_BASE_URL): Retrofit {
+    fun createClient(host: String = USER_BASE_URL): Retrofit {
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(HttpCustomLoggingInterceptor().apply { level = httpLogLevel })
+//            .addInterceptor("인증정보")
             .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)

@@ -25,4 +25,14 @@ class CoroutineGithubListViewModel(private val repository: CoroutineGithubReposi
     fun setQuery(query: String) {
         _query.value = query
     }
+
+
+    //참고용
+    val _list = MutableLiveData<UserResponse>()
+    val list2 : LiveData<UserResponse>
+        get() = _list
+
+    suspend fun getUser(){
+        _list.value = repository.coroutineFetchUser(_query.value?:"")
+    }
 }
