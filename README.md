@@ -103,12 +103,38 @@
         - CoroutineGithubListViewModel.kt
         - getUser()
 - Week 5
+    - clean architecture
+        # **Why Clean Architecture?**
+
+        1. **Separation of Concerns** — Separation of code in different modules or sections with specific responsibilities making it easier for maintenance and further modification.
+        2. **Loose coupling —** flexible code anything can be easily be changed without changing the system
+        3. **Easily Testable**
+
+        관심사의 분리, Testable 한 구조, 변경이 용이한 코드 등의 목적을 만족하기 위해 여러 아키텍처를 도입하는 시도가 있었고, 클린 아키텍처는 이러한 아키텍처들의 장점을 모아 정의한 것이라고 마틴은 얘기하고 있다.
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a6173f9-b404-47ec-8228-4a2ad97a5b71/Untitled.png)
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7d6267fd-ec28-4106-aaeb-fdf495141736/Untitled.png)
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e127693d-1bca-4c54-a55e-1ca240ecf3c2/Untitled.png)
+
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9948cb42-12ae-4d71-9659-dc531077c79f/Untitled.png)
+
+        - 각 영역별 구성요소
+            - Presentation : UI, ViewModel
+            - Data : RepositoryImpl, Remote/Local DataSource, Retrofit API interfaces
+            - Domain : UseCase, Model, Repository interface
+
+        - 참고
+            - [https://jungwoon.github.io/android/2021/04/12/Android-CleanArchitecture.html](https://jungwoon.github.io/android/2021/04/12/Android-CleanArchitecture.html)
     - Paging
         - [https://developer.android.com/topic/libraries/architecture/paging/v3-overview](https://developer.android.com/topic/libraries/architecture/paging/v3-overview)
     - Dependency Injection
-    - Koin
-         - [https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html](https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html)
-         - [https://salix97.tistory.com/265](https://salix97.tistory.com/265)
+        - dagger hilt
+
+        - Koin
+            - [https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html](https://spoqa.github.io/2020/11/02/android-dependency-injection-with-koin.html)
+            - [https://salix97.tistory.com/265](https://salix97.tistory.com/265)
 
 - Week 6 - 3rd party
     - Lottie, ~~Circle ImageView~~
