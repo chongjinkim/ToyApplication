@@ -17,6 +17,14 @@
         tools:context=".MainActivity">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/week1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="week1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,10 +32,26 @@
             android:padding="10dp"
             android:text="@{String.valueOf(viewModel.count)}"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@id/startNewActivity"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/week1"
             tools:text="0" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/minus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="minus"
+            app:layout_constraintTop_toBottomOf="@id/count"
+            app:layout_constraintEnd_toStartOf="@id/add"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="add"
+            app:layout_constraintTop_toBottomOf="@id/count"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/minus" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startNewActivity"
@@ -38,7 +62,7 @@
             app:layout_constraintBottom_toTopOf="@id/startNewActivityForResult"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/count" />
+            app:layout_constraintTop_toBottomOf="@id/minus" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/startNewActivityForResult"
@@ -79,24 +103,5 @@
             android:layout_height="wrap_content"
             android:text="start coroutines github fragment"
             app:layout_constraintTop_toBottomOf="@id/startGithubFragment" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/minus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="minus"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/add"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/add"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/minus" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
