@@ -27,6 +27,8 @@ data class User(
     val url: String,
     var isFavorite: Boolean
 ) : Parcelable {
+    //한 곳에서 관리할 수 있는 장점
+    //서버에서 가지고 온 비교할 수 있는 기준
     companion object {
         val DiffUtil = object : androidx.recyclerview.widget.DiffUtil.ItemCallback<User>() {
             override fun areItemsTheSame(oldItem: User, newItem: User) = oldItem == newItem
