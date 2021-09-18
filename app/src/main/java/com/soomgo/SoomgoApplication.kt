@@ -14,3 +14,35 @@ class SoomgoApplication : Application() {
         }
     }
 }
+
+
+abstract class Engine{
+    abstract fun startEngine()
+}
+
+class ElectronicEngine() : Engine(){
+    override fun startEnging(){
+        //E Engine
+    }
+}
+
+class DiselEngine : Engine(){
+    override fun startEngine() {
+        //start disel engine
+    }
+
+}
+
+class Car(){
+    private val engine = Engine()
+
+    fun start(){
+        engine.startEngine()
+    }
+}
+
+class NewCar(val engine : Engine){
+    fun startCar(){
+        engine.startEngine()
+    }
+}

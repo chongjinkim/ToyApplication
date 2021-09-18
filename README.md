@@ -145,3 +145,60 @@
 - Kotlin in action
 
 - https://developer.android.com/training/constraint-layout
+
+
+
+
+-  m v vm
+
+api -> repository -> viewModel -> view
+
+viewModel(Repository)
+ - repository 로 부터 데이터를 가져옴 -> 필요한 형태로 가공 -> view! 데이터 전달 (그러기 위해 livedata)
+
+view
+ - 화면 구성
+ ================================================================================
+   ->1.  recyclerview
+        adapter
+           class Adapter : RecyclerView.Adapter  <VH> @@ (){
+               1. val list = List<User>() // type definition
+                list -> adapter 에서 보여줘야할 데이터의 list
+               2. how to update list?!
+                fun 만들어서 수동으로 업데이트
+               3. onBindViewHolder( position : Int ){
+                  list[positon] --> USER
+               }
+
+           }
+
+        viewHolder (Data binding) -> ViewHolder(@@view : View)
+                                          --> binding.root : View
+   ->
+
+   ================================================================================
+   -> 2. fragment / activity xml recyclerview 꽂아줌
+   //공유되어 있는 공통의 어댑터를 생성을 하셔서 재사용
+   binding.recyclerview = Adapter
+
+   //adapter 에 들어갈 데이터의 원천?! repository
+   livedata : "VIEWMODEL" 업데이트 정보를 view observe
+     repository -> viewmodel
+
+   viewModel livedata 는 어떻게 데이터를 가지고 올것인가?!
+   getUSer(Query) ->val user =  livedata<List<User>>
+
+   1. livedata 에 언제 / 어떻게 데이터가 들어가는가?
+    언제 / 어떻게 : getUser(query)
+
+   2. user 라는 livedata -> data holder
+    -> 화면은 어떻게 눈치를 챌 것인가?! OBSERVE
+    -> viewModel 객체가 생성이 되어 있어야했다. by viewModel()
+    -> viewModel.user.observe(viewLifeCycleOwner){list ->
+     adapter.setList(list)
+    }
+
+
+
+
+
