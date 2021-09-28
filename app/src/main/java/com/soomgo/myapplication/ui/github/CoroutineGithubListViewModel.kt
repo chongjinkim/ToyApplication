@@ -6,6 +6,7 @@ import com.soomgo.myapplication.data.model.UserResponse
 import com.soomgo.myapplication.data.remoteDataSource.CoroutineGithubRepository
 import com.soomgo.myapplication.data.remoteDataSource.CoroutineGithubRepositoryImpl
 import com.soomgo.myapplication.data.remoteDataSource.GithubRepository
+import kotlinx.coroutines.launch
 import retrofit2.Call
 
 class CoroutineGithubListViewModel(private val repository: CoroutineGithubRepository) :

@@ -1,5 +1,6 @@
 package com.soomgo.myapplication.ui.github
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,9 @@ import com.soomgo.myapplication.databinding.FragmentMainBinding
 import com.soomgo.myapplication.databinding.LayoutMainListBinding
 import com.soomgo.myapplication.ui.fragment.MainFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
+import org.koin.java.KoinJavaComponent.inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -84,7 +88,8 @@ class GithubListFragment : Fragment() {
 }
 
 //LIST ADAPTER
-class GithubAdapter : ListAdapter<User, MainFragment.MainViewHolder>(User.DiffUtil) {
+class GithubAdapter : ListAdapter<User, MainFragment.MainViewHolder>(User.DiffUtil), KoinComponent {
+    val context : Context by inject()
     var clickListener: ((User) -> Unit)? = null
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -97,6 +102,7 @@ class GithubAdapter : ListAdapter<User, MainFragment.MainViewHolder>(User.DiffUt
 
     override fun onBindViewHolder(holder: MainFragment.MainViewHolder, position: Int) {
         holder.binding.apply {
+//            val stringRes = context.getString(R.string.app_name)
             Glide.with(this.root).load(getItem(position).avatar_url).into(image)
             title.text = getItem(position).login
             subTitle.text = getItem(position).repos_url
