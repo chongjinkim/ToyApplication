@@ -140,6 +140,10 @@
     - Lottie, ~~Circle ImageView~~
     - Room, SharedPreference
 - Week 7 - Coroutines 7-8주
+  - concat adpater
+  - horizontal adpater : recyclerview 내부의 recyclerview
+  - binding adapter
+  - room db : entity / dao / db
 
 
 - Kotlin in action
